@@ -7,9 +7,10 @@ const routes = require("./routes");
 
 app.use(expressLayouts);
 app.use(express.json());
+app.use(express.static("public/styles"));
 
 app.set("view engine", "ejs");
-app.set("layout", "views/layout/main");
+app.set("layout", "layout/main");
 
 routes(app);
 
