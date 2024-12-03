@@ -26,8 +26,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
-
 userSchema.statics.register = async function (name, email, password) {
   if (!name || !email || !password) {
     throw Error("Fill out all required fields");
@@ -75,4 +73,4 @@ userSchema.statics.login = async function (email, password) {
   return user;
 };
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Users", userSchema);
