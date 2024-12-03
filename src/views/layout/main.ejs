@@ -6,8 +6,9 @@
     <title>Service App</title>
     <link rel="stylesheet" href="/output.css" />
   </head>
-  <body>
-    <%- include("../partials/navbar") %> <%- body %> <%-
-    include("../partials/footer") %>
+  <body class="flex flex-col min-h-screen">
+    <%- include("../partials/navbar") %>
+    <main class="flex-grow"><%- body %></main>
+    <%- include("../partials/footer") %>
   </body>
 </html>
