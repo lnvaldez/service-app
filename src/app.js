@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
 
 const connectDB = require("./config/db.config");
@@ -18,6 +19,13 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.set("view engine", "ejs");
 app.set("layout", "layout/main");
