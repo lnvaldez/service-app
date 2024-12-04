@@ -46,7 +46,7 @@ const login = async (req, res) => {
       role: user.role,
     };
 
-    res.redirect("pages/index");
+    res.redirect("/");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
