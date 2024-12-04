@@ -39,14 +39,26 @@ const login = async (req, res) => {
   try {
     const user = await User.login(email, password);
 
-    const token = generateToken(user._id, user.role);
+    req.session.user = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    };
 
-    req.session.token = token;
-
-    res.redirect("/admin/dashboard");
+    res.redirect("pages/index");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-module.exports = { register, login };
+const logout = async (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session");
+    }
+    res.redirect("/");
+  });
+};
+
+module.exports = { register, login, logout };
