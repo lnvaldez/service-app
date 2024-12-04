@@ -13,6 +13,7 @@ const app = express();
 const routes = require("./routes");
 
 app.use(expressLayouts);
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public/styles"));
 app.use((req, res, next) => {

@@ -13,12 +13,4 @@ router.get("/provider/:id", (req, res) => {
   res.render("pages/service-provider");
 });
 
-router.get("/login", (req, res) => {
-  res.render("pages/login");
-});
-
-router.get("/signup", (req, res) => {
-  res.render("pages/register");
-});
-
 module.exports = router;
