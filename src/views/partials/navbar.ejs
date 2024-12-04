@@ -27,6 +27,7 @@
       </div>
 
       <ul class="hidden md:flex items-center space-x-8">
+        <% if (!user) { %>
         <li>
           <a href="/users/login" class="text-gray-600 hover:text-indigo-600"
             >Log In</a
@@ -37,6 +38,19 @@
             >Register</a
           >
         </li>
+        <% } else { %> <% if (user.role === 'Admin') { %>
+        <li>
+          <a href="/admin/panel" class="text-gray-600 hover:text-indigo-600"
+            >Admin Panel</a
+          >
+        </li>
+        <% } %>
+        <li>
+          <a href="/users/logout" class="text-gray-600 hover:text-indigo-600"
+            >Logout</a
+          >
+        </li>
+        <% } %>
         <li>
           <a
             href="/post"
@@ -50,6 +64,7 @@
 
     <div id="mobile-menu" class="hidden md:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <% if (!user) { %>
         <a
           href="/users/login"
           class="block text-gray-600 hover:text-indigo-600 py-2"
@@ -60,6 +75,19 @@
           class="block text-gray-600 hover:text-indigo-600 py-2"
           >Register</a
         >
+        <% } else { %> <% if (user.role === 'Admin') { %>
+        <a
+          href="/admin/panel"
+          class="block text-gray-600 hover:text-indigo-600 py-2"
+          >Admin Panel</a
+        >
+        <% } %>
+        <a
+          href="/users/logout"
+          class="block text-gray-600 hover:text-indigo-600 py-2"
+          >Logout</a
+        >
+        <% } %>
         <a
           href="/post"
           class="block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 mt-2"
